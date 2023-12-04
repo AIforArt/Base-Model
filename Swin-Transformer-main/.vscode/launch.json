@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "2",
+                "RANK":"0",
+                "WORLD_SIZE":"1",
+                "MASTER_ADDR":"localhost",
+                "MASTER_PORT":"1234"
+            },
+            "args": [
+            "-m",
+            "torch.distributed.run",
+            "--master_port",
+            "1234",
+            "--nproc_per_node",
+            "1",
+            "--batch-size","8",
+            "--cfg","/mnt/tmp/zhangying/code/Swin-Transformer-main/configs/swin_tiny_patch4_window7_224.yaml",
+            "--data-path","/mnt/tmp/zhangying/code/Swin-Transformer-main/imagenet",
+            "--local_rank","0"]
+        }
+    ]
+}
